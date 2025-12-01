@@ -5,8 +5,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'PHYSICAL AI AND HUMANOID ROBOTICS',
+  tagline: 'Mastering the Future of Human-like Machines',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -67,15 +67,17 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
+  themes: ['@docusaurus/theme-mermaid'],
 
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
-      respectPrefersColorScheme: true,
+      defaultMode: 'dark',
+      respectPrefersColorScheme: false,
     },
     navbar: {
-      title: 'My Site',
+      title: 'PHYSICAL AI AND HUMANOID ROBOTICS',
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',
@@ -85,7 +87,8 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Book',
+          to: '/docs/chapter-1/1-1-history',
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
@@ -102,8 +105,8 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: 'Book',
+              to: '/docs/chapter-1/1-1-history',
             },
           ],
         },
@@ -138,11 +141,17 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Anthropic, Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+    },
+    mermaid: {
+      theme: {
+        light: 'neutral',
+        dark: 'dark',
+      },
     },
   } satisfies Preset.ThemeConfig,
 };

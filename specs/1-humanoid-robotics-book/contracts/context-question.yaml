@@ -1,0 +1,53 @@
+openapi: 3.0.0
+info:
+  title: Context Question Endpoint
+  version: 1.0.0
+paths:
+  /context-question:
+    post:
+      summary: Query the RAG agent with a question and provided context.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                  description: The question to ask the RAG agent.
+                context:
+                  type: string
+                  description: Additional text context to use for answering the question.
+              example:
+                query: "What are the ethical considerations mentioned here?"
+                context: "Humanoid robots raise several ethical questions, including..."
+      responses:
+        '200':
+          description: Successful response from the RAG agent based on the provided context.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  answer:
+                    type: string
+                    description: The answer provided by the RAG agent based on the book content and additional context.
+                  sources:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        file:
+                          type: string
+                          description: The source file of the retrieved chunk.
+                        heading:
+                          type: string
+                          description: The heading of the retrieved chunk.
+                        text_snippet:
+                          type: string
+                          description: A snippet of the text from the retrieved chunk.
+        '400':
+          description: Invalid request, missing query or context.
+        '500':
+          description: Internal server error.
